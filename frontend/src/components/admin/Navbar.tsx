@@ -5,6 +5,7 @@ import { FaUserAlt, FaSitemap } from "react-icons/fa";
 import { AiOutlineMail } from "react-icons/ai";
 import { useState } from "react";
 import NavItemList from "./NavItemList";
+import PanelTitle from "./PanelTitle";
 
 export interface AdminNavbarItem {
   icon: any;
@@ -44,6 +45,7 @@ const Navbar: React.FC = () => {
 
   return (
     <div className="navbar">
+      <PanelTitle />
       <div className="navbar__item">
         <NavItem
           icon={<CiSettings />}
