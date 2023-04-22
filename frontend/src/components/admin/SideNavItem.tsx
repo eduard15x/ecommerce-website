@@ -1,34 +1,26 @@
+import { Link, useLocation } from "react-router-dom";
+
 interface Props {
+  linkTo: string;
   text: string;
   icon: any;
-  index: number;
-  active: number;
-  setActive: React.Dispatch<React.SetStateAction<number>>;
 }
 
-const SideNavItem: React.FC<Props> = ({
-  text,
-  icon,
-  index,
-  active,
-  setActive,
-}) => {
-  const handle = (index: number) => {
-    setActive(index);
-  };
+const SideNavItem: React.FC<Props> = ({ linkTo, text, icon }) => {
+  const location = useLocation();
 
   return (
-    <li
+    <Link
+      to={`/admin/${linkTo}`}
       className={
-        active === index
+        location.pathname === `/admin/${linkTo}`
           ? "sidenav__item  sidenav__item--active"
           : "sidenav__item"
       }
-      onClick={() => handle(index)}
     >
       <span className="text">{text}</span>
       <span className="icon">{icon}</span>
-    </li>
+    </Link>
   );
 };
 

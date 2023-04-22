@@ -1,7 +1,8 @@
 import axios from "axios";
+// components
 import Navbar from "../components/admin/Navbar";
 import SideNav from "../components/admin/SideNav";
-// components
+import { Outlet } from "react-router-dom";
 
 const Admin: React.FC = () => {
   // const getData = async () => {
@@ -19,6 +20,9 @@ const Admin: React.FC = () => {
     <div>
       <Navbar />
       <SideNav />
+      <div className="panel-body">
+        <Outlet />
+      </div>
     </div>
   );
 };

@@ -8,6 +8,7 @@
   align-items: center;
   justify-content: flex-end;
   position: fixed;
+  z-index: 100;
 
   &__item {
     font-weight: bold;

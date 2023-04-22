@@ -10,45 +10,46 @@ import SideNavItem from "./SideNavItem";
 
 interface SideNavItemModel {
   name: string;
-  icon?: any;
-  link?: string;
+  icon: any;
+  link: string;
 }
 
 const arr: SideNavItemModel[] = [
   {
     name: "Dashboard",
     icon: <AiOutlineDashboard />,
+    link: "dashboard",
   },
   {
     name: "Content",
     icon: <BiBookContent />,
+    link: "content",
   },
   {
     name: "Catalogs",
     icon: <GrCatalog />,
+    link: "catalogs",
   },
   {
     name: "Sales",
     icon: <TbChartInfographic />,
+    link: "sales",
   },
   {
     name: "Settings",
     icon: <CiSettings />,
+    link: "settings",
   },
 ];
 
 const SideNav: React.FC = () => {
-  const [active, setActive] = useState<number>(0);
-
   return (
     <ul className="sidenav">
       {arr.map((item, index) => (
         <SideNavItem
+          linkTo={item.link}
           text={item.name}
           icon={item.icon}
-          index={index}
-          active={active}
-          setActive={setActive}
           key={index}
         />
       ))}
