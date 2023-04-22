@@ -1,5 +1,6 @@
 import axios from "axios";
 import Navbar from "../components/admin/Navbar";
+import SideNav from "../components/admin/SideNav";
 // components
 
 const Admin: React.FC = () => {
@@ -17,6 +18,7 @@ const Admin: React.FC = () => {
   return (
     <div>
       <Navbar />
+      <SideNav />
     </div>
   );
 };
