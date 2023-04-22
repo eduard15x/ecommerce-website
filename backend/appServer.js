@@ -4,7 +4,9 @@ const MONGO_DB = process.env.MONGO_DB;
 
 const express = require("express");
 const cors = require("cors");
-const productsRouter = require("./routes/products");
+// routes import
+const productsRoutes = require("./routes/products");
+const usersRoutes = require("./routes/users");
 const mongoose = require("mongoose");
 
 // express app
@@ -20,7 +22,8 @@ app.use((req, res, next) => {
 });
 
 // routes
-app.use("/products", productsRouter);
+app.use("/eduard", productsRoutes);
+app.use("/eduard/user", usersRoutes); // -> www.blabla.com/eduard/user/login
 
 // connection to mongodb
 mongoose

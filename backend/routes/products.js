@@ -11,14 +11,14 @@ const router = express.Router();
 
 // create routes
 // GET all workouts
-router.get("/", getProducts);
+router.get("/products", getProducts);
 
-router.get("/:id", getProduct);
+router.get("/products/:id", getProduct);
 
-router.post("/", createProduct);
+router.post("/products", createProduct);
 
-router.delete("/:id", deleteProduct);
+router.delete("/products/:id", deleteProduct);
 
-router.patch("/:id", updateProduct);
+router.patch("/products/:id", updateProduct);
 
 module.exports = router;
