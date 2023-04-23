@@ -8,12 +8,17 @@ import InfoPanel from "./components/admin/InfoPanel";
 import Catalogs from "./components/admin/Catalogs";
 import Sales from "./components/admin/Sales";
 import Settings from "./components/admin/Settings";
+import Signup from "./components/site/Signup";
+import Login from "./components/site/Login";
 
-const App = () => {
+const App: React.FC = () => {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/" Component={Home} />
+        <Route path="/" Component={Home}>
+          <Route path="signup" Component={Signup} />
+          <Route path="login" Component={Login} />
+        </Route>
         <Route path="/admin" Component={Admin}>
           {/* nest inside InfoPanel */}
           <Route path="" Component={InfoPanel} />
