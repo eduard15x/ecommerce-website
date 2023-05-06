@@ -21,6 +21,7 @@ const Navbar: React.FC = () => {
     {
       icon: <FaSitemap />,
       name: "site",
+      link: "/",
     },
     {
       icon: <AiOutlineMail />,
@@ -29,6 +30,7 @@ const Navbar: React.FC = () => {
     {
       icon: <FiDatabase />,
       name: "database",
+      link: "https://cloud.mongodb.com/v2/643ab318e08d3351ea469c02#/metrics/replicaSet/643ab367e4a4d4372e2dbfbd/explorer/admin-panel",
     },
   ];
 

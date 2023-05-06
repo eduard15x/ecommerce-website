@@ -1,45 +1,39 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
-import { useSignup } from "../../hooks/useSignup";
+import { useLogin } from "../../hooks/useLogin";
 
-const Signup = () => {
-  const role = "user";
+const LoginAdmin = () => {
   const [email, setEmail] = useState<string>("");
   const [password, setPassword] = useState<string>("");
-  const { signup, error, isLoading } = useSignup();
+  const { login, error, isLoading } = useLogin();
 
   const handleSubmit: React.FormEventHandler<HTMLFormElement> = async (e) => {
     e.preventDefault();
-    await signup(email, password, role);
+    await login(email, password, false);
   };
 
   return (
-    <form className="signup" onSubmit={handleSubmit}>
-      <h3>Sign up</h3>
-      <label>Email:</label>
+    <form className="login" onSubmit={handleSubmit}>
+      <h3>Admin Panel Account</h3>
+      <label>Admin Email:</label>
       <input
         type="email"
-        name="email"
         onChange={(e) => setEmail(e.target.value)}
         value={email}
       />
-      <label>Password:</label>
+
+      <label>Admin Password:</label>
       <input
         type="password"
-        name="password"
         onChange={(e) => setPassword(e.target.value)}
         value={password}
       />
-      <input type="hidden" name="role" value={role} />
+
       <button type="submit" disabled={isLoading}>
-        Sign up
+        Log in
       </button>
       {error && <p>{error}</p>}
-
-      <p>Already have an account?</p>
-      <Link to="/login">Login</Link>
     </form>
   );
 };
 
-export default Signup;
+export default LoginAdmin;

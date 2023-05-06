@@ -7,7 +7,7 @@ export const useLogin = () => {
   const [isLoading, setIsLoading] = useState(false);
   const { dispatch } = useAuthContext();
 
-  const login = async (email, password) => {
+  const login = async (email, password, redirect) => {
     setError(null);
     setIsLoading(true);
 
@@ -25,13 +25,32 @@ export const useLogin = () => {
     }
 
     if (response.ok) {
-      // save json web token to local storage
-      localStorage.setItem("user", JSON.stringify(json));
+      const userInfo = await fetch(
+        `http://localhost:4200/eduard/user/${email}`
+      );
+      const data = await userInfo.json();
+
+      if (userInfo.ok) {
+        // add the role for current user
+        const userCompleteInfo = {
+          ...json,
+          role: data.role,
+        };
+        // save json web token to local storage
+        localStorage.setItem("user", JSON.stringify(userCompleteInfo));
+      }
 
       // update authContext
       dispatch({ type: "LOGIN", payload: json });
 
       setIsLoading(false);
+
+      // redirect or reload base on redirect boolean value
+      if (redirect) {
+        window.location.href = "/";
+      } else {
+        window.location.reload();
+      }
     }
   };
 

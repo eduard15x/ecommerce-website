@@ -10,8 +10,14 @@ import Sales from "./components/admin/Sales";
 import Settings from "./components/admin/Settings";
 import Signup from "./components/site/Signup";
 import Login from "./components/site/Login";
+import LoginAdmin from "./components/admin/LoginAdmin";
+
+import { useAuthContext } from "./hooks/useAuthContext";
 
 const App: React.FC = () => {
+  const { user } = useAuthContext();
+  console.log(user);
+
   return (
     <BrowserRouter>
       <Routes>
@@ -19,15 +25,19 @@ const App: React.FC = () => {
           <Route path="signup" Component={Signup} />
           <Route path="login" Component={Login} />
         </Route>
-        <Route path="/admin" Component={Admin}>
-          {/* nest inside InfoPanel */}
-          <Route path="" Component={InfoPanel} />
-          <Route path="dashboard" Component={Dashboard} />
-          <Route path="content" Component={Content} />
-          <Route path="catalogs" Component={Catalogs} />
-          <Route path="sales" Component={Sales} />
-          <Route path="settings" Component={Settings} />
-        </Route>
+        {user && user.role === "admin" ? (
+          <Route path="/admin" Component={Admin}>
+            {/* nest inside InfoPanel */}
+            <Route path="" Component={InfoPanel} />
+            <Route path="dashboard" Component={Dashboard} />
+            <Route path="content" Component={Content} />
+            <Route path="catalogs" Component={Catalogs} />
+            <Route path="sales" Component={Sales} />
+            <Route path="settings" Component={Settings} />
+          </Route>
+        ) : (
+          <Route path="/admin" Component={LoginAdmin} />
+        )}
       </Routes>
     </BrowserRouter>
   );
