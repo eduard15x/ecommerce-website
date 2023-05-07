@@ -1,0 +1,32 @@
+.catalog-panel {
+  .products {
+    &__list {
+      min-height: 250px;
+      max-height: 500px;
+      background-color: aqua;
+      overflow-y: auto;
+
+      &--item {
+        margin-bottom: 20px;
+        display: flex;
+        background-color: chartreuse;
+        padding: 10px 20px;
+
+        .product-details {
+          width: 100%;
+          font-size: 18px;
+          display: flex;
+          &--id,
+          &--name {
+            width: 400px;
+          }
+
+          &--price,
+          &--status {
+            width: 300px;
+          }
+        }
+      }
+    }
+  }
+}

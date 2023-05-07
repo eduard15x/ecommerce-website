@@ -16,6 +16,19 @@ const productSchema = new Schema(
       type: Number,
       required: true,
     },
+    images: [
+      {
+        base64: {
+          type: String,
+        },
+        name: {
+          type: String,
+        },
+        lastModified: {
+          type: Number,
+        },
+      },
+    ],
   },
   { timestamps: true }
 ); // when u try to create a new document it automatically it creates that createdAt prop for us

@@ -10,7 +10,9 @@ interface Props {
 const NavItemList: React.FC<Props> = ({ arr }) => {
   const { logout } = useLogout();
   const handleLogout = (): void => {
-    logout(false);
+    setTimeout(() => {
+      logout(false);
+    }, 750);
   };
 
   return arr && arr.length ? (
@@ -27,7 +29,7 @@ const NavItemList: React.FC<Props> = ({ arr }) => {
           }
           className="list-item"
           key={index}
-          onClick={handleLogout}
+          onClick={item.name === "logout" ? handleLogout : undefined}
         >
           <span className="icon">{item.icon}</span>
           <span>{item.name}</span>
